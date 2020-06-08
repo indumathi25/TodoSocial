@@ -1,0 +1,102 @@
+<div class="py-5 text-center">
+        <img class="d-block mx-auto mb-4" src="/docs/4.5/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h2>Registration form</h2>
+      </div>
+      
+      <div class="row">
+        <div class="col-md-12 order-md-1">
+          <h4 class="mb-3">ToDo Form</h4>
+          <form #f="ngForm" (ngSubmit)="submit(f)" class="needs-validation">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="first_name">First name</label>
+                <input 
+                [(ngModel)]="first_name" 
+                name="first_name"
+                type="text" class="form-control" 
+                id="first_name" placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid first name is required.
+                </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="last_name">Last name</label>
+                <input type="text" 
+                [(ngModel)]="last_name"
+                name="last_name"
+                class="form-control" id="last_name" 
+                placeholder="" value="" required>
+                <div class="invalid-feedback">
+                  Valid last name is required.
+                </div>
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <label for="email_id">Email</label>
+              <input [(ngModel)]="email_id" 
+                type="email" class="form-control" 
+                id="email_id" name="email_id" 
+                placeholder="you@example.com" required>
+              <div class="invalid-feedback">
+                Please enter a valid email address for shipping updates.
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <label for="password">Password</label>
+              <input [(ngModel)]="password"
+              type="password" name="password"
+              class="form-control" id="password" 
+              required>
+              <div class="invalid-feedback">
+                Please enter your password.
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <label for="confirm_password">Confirm Password</label>
+              <input [(ngModel)]="confirm_password"
+              type="password" name="confirm_password"
+              class="form-control" id="confirm_password" 
+              required>
+              <div class="invalid-feedback">
+                Please enter your confirm password.
+              </div>
+            </div>
+      
+            <div class="mb-3">
+              <label for="tags">Tags</label>
+            
+              <div class="row" style="margin-left: 0px;">
+                <div class="col-md-3 mb-3 custom-control custom-checkbox"
+                *ngFor="let tag of tags">
+                  <input type="checkbox" 
+                  ngModel
+                  name="{{ tag.name }}" [value]="tag.name"
+                  class="form-check-input" 
+                  (change)="onChangeCategory($event, tag)"
+                  placeholder="" id="tag-{{tag.id}}" >
+                  <label for="tag-{{tag.id}}">{{tag.name}}</label>
+                </div>
+              </div>
+            </div>
+      
+            <hr class="mb-4">
+      
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" required ngModel
+              class="custom-control-input" id="save-info">
+              <label class="custom-control-label" for="save-info">Agree for Terms and Conditions</label>
+            </div>
+            <hr class="mb-4">
+      
+      
+            <!-- <p>{{f.value | json}}</p> -->
+            <button class="btn btn-primary btn-lg btn-block" 
+              [disabled]="!f.valid"
+              type="submit">
+              Submit</button>
+          </form>
+        </div>
+      </div>
